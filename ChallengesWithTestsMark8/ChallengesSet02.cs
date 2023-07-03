@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace ChallengesWithTestsMark8
@@ -83,22 +84,72 @@ namespace ChallengesWithTestsMark8
 
         public int Sum(int[] numbers)
         {
-            throw new NotImplementedException();
+            if (numbers != null && numbers.Any())
+            {
+              return numbers.Sum();  
+            }
+            else
+            {
+                return 0;
+            }
+            
         }
 
         public int SumEvens(int[] numbers)
+
         {
-            throw new NotImplementedException();
+            List<int> evenNumbers = new List<int>();
+
+            if (numbers !=null && numbers.Any())
+            {
+                foreach (int number in numbers)
+                {
+                    if (number % 2 == 0)
+                    {
+
+                        evenNumbers.Add(number);
+
+
+                    }
+
+                }
+                return evenNumbers.Sum();
+            }
+            else
+            { 
+                return 0; 
+            }
+
+            
+
         }
 
         public bool IsSumOdd(List<int> numbers)
         {
-            throw new NotImplementedException();
+            if (numbers != null && numbers.Sum() % 2 != 0)
+            {
+                return true;
+            }
+            return false;
+
+           
+
         }
 
         public long CountOfPositiveOddsBelowNumber(long number)
         {
-            throw new NotImplementedException();
+            List<long> positiveOdds = new List<long>(); 
+
+            long countToNumber = 0;
+            if (number > 0)
+            {
+                    for (long i = 1; i < number; i += 2)
+                    {
+                        positiveOdds.Add(i);
+                    }
+            }
+            return positiveOdds.Count;
+
         }
     }
 }
