@@ -42,32 +42,90 @@ namespace ChallengesWithTestsMark8
 
         public void ChangeBusinessNameTo_TrueCoders(Business biz)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(biz.Name))
+            {
+                biz.Name = "TrueCoders";
+            }
+            else
+            {
+                biz.Name = biz.Name.Replace(biz.Name, "TrueCoders");
+            }
+            
+            
         }
 
         public bool CouldFormTriangle(int sideLength1, int sideLength2, int sideLength3)
         {
-            throw new NotImplementedException();
+            bool formsTriangle = (sideLength1 + sideLength2 > sideLength3) &&
+                                 (sideLength2 + sideLength3 > sideLength1) &&
+                                 (sideLength3 + sideLength1 > sideLength2);
+
+            return formsTriangle;
+
+            
         }
 
         public bool IsStringANumber(string input)
         {
-            throw new NotImplementedException();
+            bool isNumber = double.TryParse(input, out double number);
+            return isNumber;
         }
 
         public bool MajorityOfElementsInArrayAreNull(object[] objs)
         {
-            throw new NotImplementedException();
+            if (!objs.Any(obj => obj== null))
+            {
+                return false;
+            }
+            else
+            {
+                int nullCount = 0;
+
+                for (int i = 0; i < objs.Length; i++)
+                {
+                    if (objs[i] == null)
+                    {
+                        nullCount++;
+                    }
+                }
+                return nullCount > objs.Length / 2;
+            }
+
+            
         }
 
         public double AverageEvens(int[] numbers)
         {
-            throw new NotImplementedException();
+            double averageOfEvens;
+            bool allNumbersAreOdd = numbers?.All(number => number % 2 != 0) ?? true;
+            
+           if (numbers != null && numbers.Length > 0 && !allNumbersAreOdd)
+            {
+                averageOfEvens = numbers.Where(number => number % 2 == 0).Average();
+            }
+            else
+            {
+                averageOfEvens = 0;
+            }
+
+            return averageOfEvens;
         }
 
         public int Factorial(int number)
         {
-            throw new NotImplementedException();
+            if (number < 0) 
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            int factorial = 1;
+
+            for (int i = 2; i <= number; i++)
+            {
+                factorial *= i;
+            }
+            return factorial;
+
         }
     }
 }
