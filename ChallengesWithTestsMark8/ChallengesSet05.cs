@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ChallengesWithTestsMark8
 {
@@ -16,7 +17,6 @@ namespace ChallengesWithTestsMark8
             {
                 if (i % n == 0)
                 {
-                    Console.WriteLine($"Number {startNumber} is divisible by {n}");
                     return i;
                 }
                
@@ -26,12 +26,29 @@ namespace ChallengesWithTestsMark8
 
         public void ChangeNamesOfBusinessesWithNoRevenueTo_CLOSED(Business[] businesses)
         {
-            throw new NotImplementedException();
+           
+
+            foreach (var business in businesses)
+            {
+                if (business.TotalRevenue == 0)
+                {
+                    business.Name = "CLOSED";
+                }
+            }
         }
 
         public bool IsAscendingOrder(int[] numbers)
         {
-            throw new NotImplementedException();
+            if (numbers == null || numbers.Length == 0)
+            {
+                return false;
+            }
+
+            var ascendingOrder = numbers.OrderBy(number => number).ToArray();
+            bool trueAscendingOrder = numbers.SequenceEqual(ascendingOrder);
+
+            return trueAscendingOrder; 
+            
         }
 
         public int SumElementsThatFollowAnEven(int[] numbers)
