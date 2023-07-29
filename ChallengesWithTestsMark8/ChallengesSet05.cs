@@ -7,7 +7,21 @@ namespace ChallengesWithTestsMark8
     {
         public int GetNextNumberDivisibleByN(int startNumber, int n)
         {
-            throw new NotImplementedException();
+            if (startNumber == 0)
+            {
+                startNumber = 1;
+            }
+            
+            for (int i = startNumber + 1; ;i++)
+            {
+                if (i % n == 0)
+                {
+                    Console.WriteLine($"Number {startNumber} is divisible by {n}");
+                    return i;
+                }
+               
+                
+            }
         }
 
         public void ChangeNamesOfBusinessesWithNoRevenueTo_CLOSED(Business[] businesses)
